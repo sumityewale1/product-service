@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: product-service
+
+  datasource:
+    url: jdbc:mysql://host.docker.internal:3306/bizzcart_user_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: bizzcart_user
+    password: bizzcart_pass
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+server:
+  port: 8082
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+
+logging:
+  level:
+    org.springframework.security: DEBUG
